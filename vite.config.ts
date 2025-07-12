@@ -7,7 +7,7 @@ import path from "path";
 export default defineConfig({
   plugins: [react(), tailwindcss()],
   server: {
-    open: true,
+    // open: true, // Uncomment to open the browser automatically
     port: 3000,
   },
   resolve: {
