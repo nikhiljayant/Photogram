@@ -2,12 +2,25 @@ import { Navigate, Outlet, useLocation } from "react-router-dom";
 
 import { routes } from "../../routes";
 
-import { useUserAuth } from "@/context/userAuthContext";
+import { getAuth } from "firebase/auth";
+
+// Dependency to avoid going back to the login when page is refreshed
+import { useAuthState } from "react-firebase-hooks/auth";
 
 const ProtectedRoutes = () => {
-  const { user } = useUserAuth();
+  const auth = getAuth();
+
+  const [user, loading] = useAuthState(auth);
 
   const location = useLocation();
+
+  if (loading) {
+    return (
+      <div className="w-screen h-screen flex items-center justify-center">
+        <p>Loading...</p>
+      </div>
+    );
+  }
 
   return user ? (
     <Outlet /> // Render child routes if user is authenticated
