@@ -7,6 +7,8 @@ import { getAuth } from "firebase/auth";
 // Dependency to avoid going back to the login when page is refreshed
 import { useAuthState } from "react-firebase-hooks/auth";
 
+import Layout from "../layout/Layout";
+
 const ProtectedRoutes = () => {
   const auth = getAuth();
 
@@ -23,7 +25,9 @@ const ProtectedRoutes = () => {
   }
 
   return user ? (
-    <Outlet /> // Render child routes if user is authenticated
+    <Layout>
+      <Outlet />
+    </Layout> // Render child routes if user is authenticated
   ) : (
     <Navigate to={routes.login} state={{ from: location }} /> // Redirect to login if not authenticated
   );

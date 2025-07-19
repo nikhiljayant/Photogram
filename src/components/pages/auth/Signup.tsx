@@ -95,14 +95,9 @@ const Signup = () => {
                   </CardDescription>
                 </CardHeader>
                 <CardContent className="grid gap-4">
-                  <div className="grid grid-cols-2 gap-6">
-                    <Button variant="outline" className="text-white">
-                      <Icons.gitHub />
-                      GitHub
-                    </Button>
+                  <div className="w-full">
                     <Button
-                      variant="outline"
-                      className="text-white"
+                      className="text-white w-full"
                       onClick={handleGoogleSignIn}
                     >
                       <Icons.google />
