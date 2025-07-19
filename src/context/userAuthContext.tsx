@@ -50,7 +50,7 @@ export const userAuthContext = createContext<AuthContextData>({
   googleSignIn,
 });
 
-export const userAuthProvider: React.FunctionComponent<
+export const UserAuthProvider: React.FunctionComponent<
   IUserAuthProviderProps
 > = ({ children }) => {
   const [user, setUser] = useState<User | null>(null);
