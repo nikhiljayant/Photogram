@@ -26,6 +26,9 @@ const Post = () => {
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
+    console.log(post);
+    console.log(user);
+    console.log(fileEntry);
   };
 
   // 1:51:44
