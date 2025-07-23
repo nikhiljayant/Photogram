@@ -11,7 +11,6 @@ import { useUserAuth } from "@/context/userAuthContext";
 import { FileEntry, Post } from "@/types/types";
 
 const Post = () => {
-  console.log(Post)
   const { user } = useUserAuth();
   const [fileEntry, setFileEntry] = useState<FileEntry>({
     files: [],
