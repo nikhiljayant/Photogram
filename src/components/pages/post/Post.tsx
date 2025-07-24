@@ -31,8 +31,6 @@ const Post = () => {
     console.log(fileEntry);
   };
 
-  // 1:51:44
-
   return (
     <div className="flex justify-center">
       <div className="border max-w-3xl w-full">
