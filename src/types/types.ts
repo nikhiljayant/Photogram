@@ -13,7 +13,7 @@ export interface FileEntry {
   files: OutputFileEntry[];
 }
 
-export interface Post {
+export interface PostData {
   caption: string;
   photos: PhotoMeta[];
   likes: number;

@@ -8,14 +8,14 @@ import { Textarea } from "@/components/ui/textarea";
 
 import { useUserAuth } from "@/context/userAuthContext";
 
-import { FileEntry, Post } from "@/types/types";
+import { FileEntry, PostData } from "@/types/types";
 
 const Post = () => {
   const { user } = useUserAuth();
   const [fileEntry, setFileEntry] = useState<FileEntry>({
     files: [],
   });
-  const [post, setPost] = useState<Post>({
+  const [post, setPost] = useState<PostData>({
     caption: "",
     photos: [],
     likes: 0,
