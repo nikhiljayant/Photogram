@@ -1,8 +1,10 @@
 import { useState, useRef, useEffect, useCallback } from "react";
+
 import * as LR from "@uploadcare/blocks";
 import { OutputFileEntry } from "@uploadcare/blocks";
 import blocksStyles from "@uploadcare/blocks/web/lr-file-uploader-regular.min.css?url";
-import { FileEntry } from "@/types";
+
+import { FileEntry } from "@/types/types";
 
 LR.registerBlocks(LR);
 

@@ -1,5 +1,3 @@
-import { OutputFileEntry } from "@uploadcare/react-uploader";
-
 export interface UserLogIn {
   email: string;
   password: string;
@@ -10,7 +8,8 @@ export interface UserSignIn extends UserLogIn {
 }
 
 export interface FileEntry {
-  files: OutputFileEntry[];
+  files: [];
+  filesBlobURL: string[];
 }
 
 export interface PostData {

@@ -1,7 +1,5 @@
 import { useState } from "react";
 
-import FileUploader from "@/components/fileUploader/FileUploader";
-
 import { Button } from "@/components/ui/button";
 import { Label } from "@/components/ui/label";
 import { Textarea } from "@/components/ui/textarea";
@@ -14,6 +12,7 @@ const Post = () => {
   const { user } = useUserAuth();
   const [fileEntry, setFileEntry] = useState<FileEntry>({
     files: [],
+    filesBlobURL: [],
   });
   const [post, setPost] = useState<PostData>({
     caption: "",
@@ -23,6 +22,21 @@ const Post = () => {
     userId: null,
     date: new Date(),
   });
+
+  const handleFileUpload = (e: React.ChangeEvent<HTMLInputElement>) => {
+    if (e.target.files?.length > 0) {
+      const filesArr = Object.values(e.target.files);
+      const filesBlobURL = filesArr.map((file) => URL.createObjectURL(file));
+      setFileEntry({
+        files: filesArr,
+        filesBlobURL: filesBlobURL,
+      });
+    }
+  };
+
+  const handleRemoveFile = () => {
+    
+  }
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
@@ -58,7 +72,30 @@ const Post = () => {
               <Label className="mb-4" htmlFor="photo">
                 Photo
               </Label>
-              <FileUploader fileEntry={fileEntry} onChange={setFileEntry} />
+              {/* <FileUploader fileEntry={fileEntry} onChange={setFileEntry} /> */}
+              <input
+                type="file"
+                accept="image/*"
+                onChange={handleFileUpload}
+                multiple
+                className="border rounded-md p-[5px]"
+              />
+              {fileEntry.filesBlobURL.length > 0 &&
+                fileEntry.filesBlobURL.map((item) => (
+                  <div
+                    key={item}
+                    className="mt-[10px] relative w-[200px] h-[200px] overflow"
+                  >
+                    <img
+                      src={item}
+                      alt=""
+                      className="w-full h-full rounded-md"
+                    />
+                    <div className="cursor-pointer absolute bg-white rounded-full -right-1 -top-1 py-[3px] px-[10px] border border-black">
+                      X
+                    </div>
+                  </div>
+                ))}
             </div>
             <Button type="submit" className="mt-8 w-32">
               Post
